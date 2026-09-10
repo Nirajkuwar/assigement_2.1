@@ -5,7 +5,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/avi-720/project-by-niraj.git'
+                git url: 'https://github.com/example/app.git'
             }
         }
 
@@ -16,7 +16,7 @@ pipeline {
             }
         }
 
-        stage('Parallel Test') {
+        stage('Parallel Tests') {
             parallel {
 
                 stage('Unit Tests') {
