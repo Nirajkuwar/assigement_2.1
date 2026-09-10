@@ -5,7 +5,7 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/example/app.git'
+                git url: 'https://github.com/avi-720/project-by-niraj.git'
             }
         }
 
