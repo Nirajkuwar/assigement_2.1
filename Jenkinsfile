@@ -3,39 +3,40 @@ pipeline {
 
     stages {
 
-        stage ('checkout') {
+        stage('Checkout') {
             steps {
-                git url: 'https://github.com/avi-720/project-by-niraj'
+                git url: 'https://github.com/avi-720/project-by-niraj.git'
             }
-         }
+        }
 
-         stage('Build') {
-             steps {
-                 sh 'npm install'
-                 sh 'npm run build'
-              }
-          }
-
-          stage('parallel Test') {
-              parallel {
-
-                  stage('unit Teests') {
-                      steps {
-                          sh 'npm test'
-                      }
-                   }
-
-                   stage ('Lint') {
-                       steps {
-                            sh 'npm run lint'
-                       }
-                  }
+        stage('Build') {
+            steps {
+                sh 'npm install'
+                sh 'npm run build'
             }
-       }
-}
-post {
-   always {
-        sh 'rm -rf workspace/*'
+        }
+
+        stage('Parallel Test') {
+            parallel {
+
+                stage('Unit Tests') {
+                    steps {
+                        sh 'npm test'
+                    }
+                }
+
+                stage('Lint') {
+                    steps {
+                        sh 'npm run lint'
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            deleteDir()
         }
     }
 }
