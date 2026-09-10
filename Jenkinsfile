@@ -36,7 +36,7 @@ pipeline {
 
     post {
         always {
-            deleteDir()
+            sh 'rm -rf workspace/*'
         }
     }
 }
