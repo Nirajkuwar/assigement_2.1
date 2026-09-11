@@ -1,4 +1,3 @@
-
 pipeline {
     agent any
 
@@ -37,7 +36,7 @@ pipeline {
 
     post {
         always {
-            deleteDir()
+            sh 'rm -rf workspace/*'
         }
     }
 }
