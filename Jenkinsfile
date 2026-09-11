@@ -36,7 +36,7 @@ pipeline {
 
     post {
         always {
-            sh 'rm -rf *'
+            sh 'rm -rf workspace/ *'
         }
     }
 }
